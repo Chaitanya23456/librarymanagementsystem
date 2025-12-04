@@ -1,0 +1,27 @@
+{
+  "name": "librarymanagementsystem",
+  "version": "1.0.0",
+  "description": "hello",
+  "homepage": "https://github.com/Chaitanya23456/librarymanagementsystem#readme",
+  "bugs": {
+    "url": "https://github.com/Chaitanya23456/librarymanagementsystem/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Chaitanya23456/librarymanagementsystem.git"
+  },
+  "license": "ISC",
+  "author": "abcd",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "start" : "node index.js",
+    "dev" : "nodemon index.js"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.11"
+  }
+}
