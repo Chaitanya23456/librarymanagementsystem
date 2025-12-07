@@ -1,37 +1,61 @@
-[
-  {
-    "id": 1,
-    "name": "Alice Johnson",
-    "email": "alice.johnson@example.com",
-    "age": 28,
-    "role": "admin"
-  },
-  {
-    "id": 2,
-    "name": "Bob Smith",
-    "email": "bob.smith@example.com",
-    "age": 35,
-    "role": "user"
-  },
-  {
-    "id": 3,
-    "name": "Carol Lee",
-    "email": "carol.lee@example.com",
-    "age": 22,
-    "role": "user"
-  },
-  {
-    "id": 4,
-    "name": "David Brown",
-    "email": "david.brown@example.com",
-    "age": 40,
-    "role": "moderator"
-  },
-  {
-    "id": 5,
-    "name": "Eva Green",
-    "email": "eva.green@example.com",
-    "age": 30,
-    "role": "user"
-  }
-]
+{
+  "users": [
+    {
+      "id": "1",
+      "name": "Alice Johnson",
+      "email": "alice.johnson@example.com",
+      "age": 28,
+      "role": "admin",
+      "subscriptionType": "premium",
+      "subscriptionDate": "2024-01-15",
+      "issuedBooks": "1",
+      "issueddate": "2024-06-01",
+      "returndate": "2024-06-15"
+    },
+    {
+      "id": "2",
+      "name": "Bob Smith",
+      "email": "bob.smith@example.com",
+      "age": 35,
+      "role": "user",
+      "subscriptionType": "standard",
+      "subscriptionDate": "2024-03-10"
+    },
+    {
+      "id": "3",
+      "name": "Carol Lee",
+      "email": "carol.lee@example.com",
+      "age": 22,
+      "role": "user",
+      "subscriptionType": "basic",
+      "subscriptionDate": "2024-04-01",
+      "issuedBooks": "3",
+      "issueddate": "2024-06-05",
+      "returndate": "2024-06-20"
+    },
+    {
+      "id": "4",
+      "name": "David Brown",
+      "email": "david.brown@example.com",
+      "age": 40,
+      "role": "moderator",
+      "subscriptionType": "premium",
+      "subscriptionDate": "2024-02-12",
+      "issuedBooks": "2",
+      "issueddate": "2024-06-03",
+      "returndate": "2024-06-18"
+    },
+    {
+      "id": "5",
+      "name": "Eva Green",
+      "email": "eva.green@example.com",
+      "age": 30,
+      "role": "user",
+      "subscriptionType": "standard",
+      "subscriptionDate": "2024-05-05",
+      "issuedBooks": "4",
+      "issueddate": "2024-06-07",
+      "returndate": "2024-06-22"
+    }
+  ]
+}
