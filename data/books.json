@@ -6,6 +6,7 @@
       "author": "F. Scott Fitzgerald",
       "genre": "Fiction",
       "year": 1925,
+      "price" : "1000",
       "available": true
     },
     {
@@ -14,6 +15,7 @@
       "author": "Harper Lee",
       "genre": "Fiction",
       "year": 1960,
+      "price" : "1250",
       "available": false
     },
     {
@@ -22,6 +24,7 @@
       "author": "George Orwell",
       "genre": "Dystopian",
       "year": 1949,
+      "price" : "1500",
       "available": true
     },
     {
@@ -30,6 +33,7 @@
       "author": "Stephen Hawking",
       "genre": "Science",
       "year": 1988,
+      "price" : "800",
       "available": true
     },
     {
@@ -38,6 +42,7 @@
       "author": "J.D. Salinger",
       "genre": "Fiction",
       "year": 1951,
+      "price" : "2000",
       "available": false
     }
   ]
