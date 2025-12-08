@@ -62,3 +62,11 @@ npm i
 npm i express
 npm i nodemon --save-dev
 npm run dev
+
+
+mongodb+srv://xyza60239_db_user:<db_password>@cluster0.hzizvcr.mongodb.net/?appName=Cluster0
+
+
+1Y93bsMFEqXBHWsi
+
+mongodb+srv://xyza60239_db_user:1Y93bsMFEqXBHWsi@cluster0.hzizvcr.mongodb.net/?appName=Cluster0

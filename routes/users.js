@@ -3,6 +3,7 @@ const {users} = require("../data/users.json");
 
 const router = express.Router();
 
+const { getallusers, getuserbyid, createuser, updateuserbyid, deleteuserbyid, subscriptiondetails} = require('../controllers/usercontroller');
 /**
  * Route : /users
  * Method : GET 
@@ -12,12 +13,14 @@ const router = express.Router();
  * 
  */
 
-router.get('/',(req,res)=>{
-    res.status(200).json({
-        success : true,
-        data : users
-    })
-})
+// router.get('/',(req,res)=>{
+//     res.status(200).json({
+//         success : true,
+//         data : users
+//     })
+// })
+
+router.get('/', getallusers);
 
 /**
  * Route : /users/:id
@@ -28,27 +31,29 @@ router.get('/',(req,res)=>{
  * 
  */
 
-router.get('/:id',(req,res)=>{
+// router.get('/:id',(req,res)=>{
 
 
-    const {id} = req.params;
+//     const {id} = req.params;
 
-    const user = users.find((each)=>each.id === id)
+//     const user = users.find((each)=>each.id === id)
 
-    if(!user){
-       return res.status(404).json ({
-            success : false ,
-            message : `User not found for id :  ${id}`
-        })
-    }
+//     if(!user){
+//        return res.status(404).json ({
+//             success : false ,
+//             message : `User not found for id :  ${id}`
+//         })
+//     }
 
-    res.status(200).json({
-        success : true,
-        data : user
+//     res.status(200).json({
+//         success : true,
+//         data : user
         
 
-    })
-})
+//     })
+// })
+
+router.get('/:id', getuserbyid);
 
 
 /**
@@ -60,44 +65,47 @@ router.get('/:id',(req,res)=>{
  * 
  */
 
-router.post('/',(req,res)=>{
-    const {id,name,email,subscriptionType,subscriptionDate,age } = req.body;
+// router.post('/',(req,res)=>{
+//     const {id,name,email,subscriptionType,subscriptionDate,age } = req.body;
 
-    if (!id || !name || !email || !subscriptionType || !subscriptionDate || !age) {
-          return res.status(404).json({
-            success : false ,
-            message : "Please provide required feild"
-          })
-    }
+//     if (!id || !name || !email || !subscriptionType || !subscriptionDate || !age) {
+//           return res.status(404).json({
+//             success : false ,
+//             message : "Please provide required feild"
+//           })
+//     }
 
 
-    const user = users.find((each)=>each.id === id)
+//     const user = users.find((each)=>each.id === id)
 
-    if(user){
-       return res.status(409).json ({
-            success : false ,
-            message : `User already exists with id : ${id}`
-        })
-    }
+//     if(user){
+//        return res.status(409).json ({
+//             success : false ,
+//             message : `User already exists with id : ${id}`
+//         })
+//     }
 
-    users.push ({
-        id,
-        name,
-        email,
-        subscriptionType,
-        subscriptionDate
-    })
+//     users.push ({
+//         id,
+//         name,
+//         email,
+//         subscriptionType,
+//         subscriptionDate
+//     })
 
-    res.status(201).json({
-        success : true,
-        message : "User added succesfully",
-        data : {id,name,email,subscriptionType,subscriptionDate,age } 
+//     res.status(201).json({
+//         success : true,
+//         message : "User added succesfully",
+//         data : {id,name,email,subscriptionType,subscriptionDate,age } 
         
 
-    })
+//     })
 
 
-})
+// })
+
+
+router.post('/',createuser);
 
 
 /**
@@ -110,38 +118,40 @@ router.post('/',(req,res)=>{
  */
 
 
-router.put('/:id',(req,res)=>{
-   const {id} = req.params;
+// router.put('/:id',(req,res)=>{
+//    const {id} = req.params;
 
-   const {data} = req.body;
+//    const {data} = req.body;
 
-   const user = users.find((each)=>each.id === id)
+//    const user = users.find((each)=>each.id === id)
 
-    if(!user){
-       return res.status(404).json ({
-            success : false ,
-            message : `User not found for id :${id}`
-        })
-    }
+//     if(!user){
+//        return res.status(404).json ({
+//             success : false ,
+//             message : `User not found for id :${id}`
+//         })
+//     }
 
-    const updateduser = users.map((each)=>{
-        if(each.id === id){
-            return{
-                ...each,
-                ...data,
-            }
-        }
-        return each
-    })
+//     const updateduser = users.map((each)=>{
+//         if(each.id === id){
+//             return{
+//                 ...each,
+//                 ...data,
+//             }
+//         }
+//         return each
+//     })
 
-    res.status(200).json({
-        success : true,
-        data : updateduser,
-        message : "User updated succesfully"
+//     res.status(200).json({
+//         success : true,
+//         data : updateduser,
+//         message : "User updated succesfully"
         
 
-    })
-})
+//     })
+// })
+
+router.put('/:id',updateuserbyid);
 
 /**
  * Route : /users/:id
@@ -152,32 +162,33 @@ router.put('/:id',(req,res)=>{
  * 
  */
 
-router.delete('/:id',(req,res)=>{
-   const {id} = req.params;
+// router.delete('/:id',(req,res)=>{
+//    const {id} = req.params;
 
-   const user = users.find((each)=>each.id === id)
+//    const user = users.find((each)=>each.id === id)
 
-    if(!user){
-       return res.status(404).json ({
-            success : false ,
-            message : `User not found for id :${id}`
-        })
-    }
+//     if(!user){
+//        return res.status(404).json ({
+//             success : false ,
+//             message : `User not found for id :${id}`
+//         })
+//     }
 
-    const updateduser = users.filter((each)=>each.id !== id)
+//     const updateduser = users.filter((each)=>each.id !== id)
 
-    // const index = users.indexOf(user)
-    // users.splice(index,1)
+//     // const index = users.indexOf(user)
+//     // users.splice(index,1)
 
-    res.status(200).json({
-        success : true,
-        data : updateduser,
-        message : "User deleted succesfully"
+//     res.status(200).json({
+//         success : true,
+//         data : updateduser,
+//         message : "User deleted succesfully"
         
 
-    })
-})
+//     })
+// })
 
+router.delete('/:id',deleteuserbyid);
 
 
 /**
@@ -189,66 +200,66 @@ router.delete('/:id',(req,res)=>{
  * 
  */
 
-router.get('/subscriptiondetails/:id', (req,res) => {
-    const {id} = req.params;
+// router.get('/subscriptiondetails/:id', (req,res) => {
+//     const {id} = req.params;
 
-    const user = users.find(each => each.id === id);
+//     const user = users.find(each => each.id === id);
 
-    if(!user){
-        return res.status(404).json({
-            success: false,
-            message: `User not found for id: ${id}`
-        });
-    }
+//     if(!user){
+//         return res.status(404).json({
+//             success: false,
+//             message: `User not found for id: ${id}`
+//         });
+//     }
 
-    // Convert subscription type to number of days
-    const subscriptionDays = {
-        "Basic": 90,
-        "Standard": 180,
-        "Premium": 365
-    };
+//     // Convert subscription type to number of days
+//     const subscriptionDays = {
+//         "Basic": 90,
+//         "Standard": 180,
+//         "Premium": 365
+//     };
 
-    // Normalize subscription type (capitalize first letter)
-    const subType = user.subscriptionType.charAt(0).toUpperCase() + user.subscriptionType.slice(1).toLowerCase();
-    const subDuration = subscriptionDays[subType] || 0;
+//     // Normalize subscription type (capitalize first letter)
+//     const subType = user.subscriptionType.charAt(0).toUpperCase() + user.subscriptionType.slice(1).toLowerCase();
+//     const subDuration = subscriptionDays[subType] || 0;
 
-    // Dates
-    const subscriptionStart = new Date(user.subscriptionDate);
-    const subscriptionEnd = new Date(subscriptionStart.getTime() + subDuration*24*60*60*1000);
-    const today = new Date();
+//     // Dates
+//     const subscriptionStart = new Date(user.subscriptionDate);
+//     const subscriptionEnd = new Date(subscriptionStart.getTime() + subDuration*24*60*60*1000);
+//     const today = new Date();
 
-    let daysLeftForSubscription = Math.ceil((subscriptionEnd - today)/(1000*60*60*24));
+//     let daysLeftForSubscription = Math.ceil((subscriptionEnd - today)/(1000*60*60*24));
     
-    let daysLeftForReturn = null;
-    let returnDateText = null;
-    let fine = 0;
+//     let daysLeftForReturn = null;
+//     let returnDateText = null;
+//     let fine = 0;
 
-    if(user.returndate){
-        const returnDate = new Date(user.returndate);
-        daysLeftForReturn = Math.ceil((returnDate - today)/(1000*60*60*24));
-        returnDateText = daysLeftForReturn < 0 ? "book is overdue" : user.returndate;
+//     if(user.returndate){
+//         const returnDate = new Date(user.returndate);
+//         daysLeftForReturn = Math.ceil((returnDate - today)/(1000*60*60*24));
+//         returnDateText = daysLeftForReturn < 0 ? "book is overdue" : user.returndate;
 
-        if(daysLeftForReturn < 0){
-            fine = daysLeftForSubscription < 0 ? 200 : 100;
-        }
-    }
+//         if(daysLeftForReturn < 0){
+//             fine = daysLeftForSubscription < 0 ? 200 : 100;
+//         }
+//     }
 
-    const data = {
-        ...user,
-        subscriptionexpiry: today > subscriptionEnd,
-        subscriptiondaysleft: daysLeftForSubscription,
-        daysleftforexpiration: daysLeftForReturn,
-        returndate: returnDateText,
-        fine: fine
-    };
+//     const data = {
+//         ...user,
+//         subscriptionexpiry: today > subscriptionEnd,
+//         subscriptiondaysleft: daysLeftForSubscription,
+//         daysleftforexpiration: daysLeftForReturn,
+//         returndate: returnDateText,
+//         fine: fine
+//     };
 
-    res.status(200).json({
-        success: true,
-        data
-    });
-});
+//     res.status(200).json({
+//         success: true,
+//         data
+//     });
+// });
 
-
+router.get('/subscriptiondetails/:id', subscriptiondetails);
 
 // app.use((req, res) => {
 //     res.status(501).json({ message: "not built" });
